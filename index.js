@@ -9,5 +9,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(adminRoutes);
 app.use(shopRoutes);
 
+// page not found
+app.use((req, res, next) => {
+    res.send('<h1>page not found</h1>')
+})
 
 app.listen(3000);

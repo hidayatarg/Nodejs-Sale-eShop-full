@@ -5,8 +5,8 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
-
-app.use(adminRoutes);
+// work under admin route
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 // page not found

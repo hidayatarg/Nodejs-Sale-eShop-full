@@ -9,6 +9,7 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
     console.log('Middle ware 2 works'); 
+    res.send('<h1>Hello from nodejs</h1>')
 });
 
 app.listen(3000);

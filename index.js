@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 // views folder default is views
 app.set('views', 'views');
 

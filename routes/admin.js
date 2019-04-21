@@ -1,35 +1,25 @@
 const express = require('express')
 const path = require('path')
 
-// utils
-const rootDir = require('../utils/path')
+// import controllers
+const productController = require('../controllers/products')
+
 const router = express.Router();
 
 
-// storing product across
-const products = [];
+
 
 
 // /admin/add-product => GET
-router.get('/add-product', (req, res, next) => {
-    res.status(200)
-    .render('add-product', { 
-        pageTitle: 'Add Product', 
-        path: '/admin/add-product',
-        formCSS: true,
-        productCSS: true,
-        activeAddProduct: true
-    });
-});
+// passing a reference to the getAddProducts method
+router.get('/add-product', productController.getAddProducts);
     
 // /admin/add-product => POST
-router.post('/add-product', (req, res, next) => {
-    console.log(req.body);
-    products.push({title: req.body.title});
-    res.redirect('/');
-    
-});
+router.post('/add-product', productController.postAddProduct);
 
-// adminData will refers to following routes and products
-exports.routes = router;
-exports.products = products;
+// // adminData will refers to following routes and products
+// exports.routes = router;
+// exports.products = products;
+
+// single export
+module.exports = router;

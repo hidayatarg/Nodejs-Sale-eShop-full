@@ -1,7 +1,7 @@
 // all logic related to product is here
 
-// storing product across
-const products = [];
+// import models
+const Product = require('../models/product')
 
 exports.getAddProducts = (req, res, next) => {
     res.status(200)
@@ -16,11 +16,15 @@ exports.getAddProducts = (req, res, next) => {
 
 exports.postAddProduct = (req, res, next) => {
     console.log(req.body);
-    products.push( { title: req.body.title } );
+    const product  = new Product(req.body.title);
+    // save
+    product.save();
+
     res.redirect('/');
 };
 
 exports.getProducts = (req, res, next) => {
+    const products = Product.fetchAll();
     res.render('shop', {
         prods: products,
         pageTitle: 'Shop',

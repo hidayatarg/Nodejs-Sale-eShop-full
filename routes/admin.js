@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 
 // import controllers
-const productController = require('../controllers/products')
+const adminController = require('../controllers/admin')
 
 const router = express.Router();
 
@@ -12,10 +12,13 @@ const router = express.Router();
 
 // /admin/add-product => GET
 // passing a reference to the getAddProducts method
-router.get('/add-product', productController.getAddProducts);
+router.get('/add-product', adminController.getAddProducts);
     
 // /admin/add-product => POST
-router.post('/add-product', productController.postAddProduct);
+router.post('/add-product', adminController.postAddProduct);
+
+// /admin/products => GET
+router.get('/products', adminController.getProducts)
 
 // // adminData will refers to following routes and products
 // exports.routes = router;

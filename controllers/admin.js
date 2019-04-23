@@ -1,8 +1,4 @@
-// all logic related to product is here
-
-// import models
 const Product = require('../models/product')
-
 exports.getAddProducts = (req, res, next) => {
     res.status(200)
         .render('admin/add-product', {
@@ -11,27 +7,24 @@ exports.getAddProducts = (req, res, next) => {
             formCSS: true,
             productCSS: true,
             activeAddProduct: true
-    });
+        });
 };
 
 exports.postAddProduct = (req, res, next) => {
     console.log(req.body);
-    const product  = new Product(req.body.title);
+    const product = new Product(req.body.title);
     // save
     product.save();
-
     res.redirect('/');
 };
 
 exports.getProducts = (req, res, next) => {
     Product.fetchAll(products => {
-        res.render('shop/product-list', {
+        // the render is the view path and path is URL path in the Chrome
+        res.render('admin/products', {
             prods: products,
-            pageTitle: 'Shop',
-            path: '/',
-            hasProduct: products.lenght > 0,
-            activeShop: true,
-            productCSS: true
-        });
-    });
-}
+            path: '/admin/products',
+            pageTitle: 'Admin Products'            
+        })
+    })
+};

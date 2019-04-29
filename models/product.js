@@ -49,4 +49,14 @@ module.exports = class Product {
         getProductFromFile(cb);
     }
 
+    // expecting id 
+    // callback will be executed
+    static findById(id, cb) {
+        getProductFromFile(products => {
+            // filter products
+            const product = products.find(p => p.id === id);
+            cb(product);
+        });
+    }
+
 }

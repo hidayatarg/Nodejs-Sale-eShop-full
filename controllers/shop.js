@@ -57,6 +57,8 @@ exports.getOrders = (req, res, next) => {
 exports.getProductsById = (req, res, next) => {
     // get the productId > the name that is used in the shop route
     const prodId = req.params.productId;
-    console.log('product Id: ', prodId);
+    Product.findById(prodId, product =>{
+        console.log(product);
+    });
     res.redirect('/');
 }

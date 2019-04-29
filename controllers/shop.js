@@ -46,3 +46,17 @@ exports.getOrders = (req, res, next) => {
         pageTitle:  'Orders'
     })
 }
+
+exports.getOrders = (req, res, next) => {
+    res.render('shop/orders', {
+        path:       '/orders',
+        pageTitle:  'Orders'
+    })
+}
+
+exports.getProductsById = (req, res, next) => {
+    // get the productId > the name that is used in the shop route
+    const prodId = req.params.productId;
+    console.log('product Id: ', prodId);
+    res.redirect('/');
+}
